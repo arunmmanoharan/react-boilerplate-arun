@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import request from '../utils/request';
+import axios from 'axios';
 
 class AppComponent extends Component {
   componentDidMount() {
-    request('/colors').then(res => console.log(res.data));
+    axios.get('/colors').then(res => console.log(res.data));
   }
 
   render() {
