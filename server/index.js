@@ -1,12 +1,12 @@
 /* eslint consistent-return:0 import/order:0 */
 
 const express = require('express');
-const proxy = require('http-proxy-middleware');
 const logger = require('./logger');
 
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
+
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok =
   (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel
@@ -15,11 +15,9 @@ const ngrok =
 const { resolve } = require('path');
 const app = express();
 
-const pxhost = process.env.npm_config_pxhost || '127.0.0.1';
-const pxport = process.env.npm_config_pxport || '8080';
-
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
+
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),
@@ -30,11 +28,6 @@ setup(app, {
 const customHost = argv.host || process.env.HOST;
 const host = customHost || null; // Let http.Server use its default IPv6/4 host
 const prettyHost = customHost || 'localhost';
-
-app.use(
-  '/',
-  proxy({ target: `http://${pxhost}:${pxport}/`, changeOrigin: true }),
-);
 
 // use the gzipped bundle
 app.get('*.js', (req, res, next) => {

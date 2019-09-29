@@ -2,7 +2,8 @@
 
 - [Where are Babel, Prettier and ESLint configured?](#where-are-babel-prettier-and-eslint-configured)
 - [Where are the files coming from when I run `npm start`?](#where-are-the-files-coming-from-when-i-run-npm-start)
-- [How do I fix `Error: listen EADDRINUSE 127.0.0.1:3000`?](#how-do-i-fix-error-listen-eaddrinuse-1270013000)
+- [How do I fix `Error: Access URLs:
+listen EADDRINUSE 127.0.0.1:3000`?](#how-do-i-fix-error-listen-eaddrinuse-1270013000)
   - [OS X / Linux:](#os-x--linux)
   - [Windows](#windows)
 - [Issue with local caching when running in production mode (F5 / ctrl+F5 / cmd+r weird behavior)](#issue-with-local-caching-when-running-in-production-mode-f5--ctrlf5--cmdr-weird-behavior)

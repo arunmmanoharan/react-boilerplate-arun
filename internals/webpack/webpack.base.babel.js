@@ -105,6 +105,19 @@ module.exports = options => ({
       },
     ],
   },
+  devServer: {
+    port: 3000,
+    contentBase: 'app/',
+    historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        pathRewrite: {
+          '^/api': '',
+        },
+      },
+    },
+  },
   plugins: options.plugins.concat([
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
     // inside your code for any environment checks; Terser will automatically
